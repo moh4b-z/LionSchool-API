@@ -1,12 +1,3 @@
-/*************************************************************************
-Objetiv: API para manipular dados de uma escola de informática “Lion School”
-Data: 22/11/2024
-Autor: Mohammmad
-Versão: 1.0
-************************************************************************/
-
-// http://localhost:8080
-
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
@@ -18,17 +9,13 @@ const LionSchool = require('./module/functions.js')
 
 app.use((request, response, next) =>{
 
-    // de onde vai vim a requesição
     response.header('Acces-Control-Allow-Origin', '*')
-    // Permissão de aceso para liberar os verbos da requisição da API
     response.header('Acces-Control-Allow-Methods', 'GET')
 
-    app.use(cors()) //ativando as configurações no cors
+    app.use(cors()) 
 
     next()
 })
-
-// boa pratica:   /v1/nome do projeto/...
 
 
 app.get('/v1/lion-school/cursos', cors(), async function(request, response){
@@ -45,11 +32,6 @@ app.get('/v1/lion-school/cursos', cors(), async function(request, response){
 })
 
 app.get('/v1/lion-school/alunos/filtro', cors(), async function(request, response){
-    // http://localhost:8080/v1/lion-school/alunos/filtro?sac&nc&sa&adc
-
-    // http://localhost:8080/v1/lion-school/alunos/filtro?sac=Finalizado&nc&sa&adc
-    // http://localhost:8080/v1/lion-school/alunos/filtro?sac&nc=DS&sa=Aprovado&adc
-    // http://localhost:8080/v1/lion-school/alunos/filtro?sac&ncDS&sa=&adc=2022
     let statusAC = request.query.sac
     let nCurso = request.query.nc
     let statusA = request.query.sa
@@ -110,59 +92,6 @@ app.get('/v1/lion-school/alunos/cursos/:curso', cors(), async function(request, 
         response.json({'status': 404, 'message': "Not found"})
     }
 })
-
-// app.get('/v1/lion-school/alunos/filtro', cors(), async function(request, response){
-//     //?status={
-//     let uf = request.query.status
-
-//     let dados = LionSchool.statusCurso(uf)
-
-//     if(dados){
-//         response.status(200)
-//         response.json(dados)
-//     }else{
-//         response.status(404)
-//         response.json({'status': 404, 'message': "Not found"})
-//     }
-// })
-
-
-// //http://localhost:8080/v1/lion-school/alunos/filtro?curso=ds&status=Aprovado
-// app.get('/v1/lion-school/alunos/filtro', cors(), async function(request, response){
-//     let curso = request.query.curso
-//     let status = request.query.status
-//     let dados = LionSchool.alunosStatusCurso(curso, status)
-
-//     if(dados){
-//         response.status(200)
-//         response.json(dados)
-//     }else{
-//         response.status(404)
-//         response.json({'status': 404, 'message': "Not found"})
-//     }
-// })
-
-
-// //http://localhost:8080/v1/lion-school/alunos/filtro?curso=ds&ano-conclusao=2021
-// app.get('/v1/lion-school/alunos/filtro', cors(), async function(request, response){
-
-//     let curso = request.query.curso
-//     let aonC = request.query.ano_conclusao
-
-//     let dados = LionSchool.alunosCursoDeAno(curso, aonC)
-
-//     if(dados){
-//         response.status(200)
-//         response.json(dados)
-//     }else{
-//         response.status(404)
-//         response.json({'status': 404, 'message': "Not found"})
-//     }
-// })
-
-
-
-
 
 app.listen('8080', function(){
     console.log('API aguardando requisição ...')
