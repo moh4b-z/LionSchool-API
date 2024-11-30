@@ -149,7 +149,7 @@ function filtro(statusAlunosCursoS, nomeCurso, statusAluno, anoDeComnclusao) {
 }
 
 // console.log(alunosCurso("DS"))
-console.log(alunosStatusCurso("DS", "EXAME"))
+// console.log(alunosStatusCurso("DS", "EXAME"))
 // console.log(alunosCursoDeAno("DS", "2022"))
 // console.log(filtro("", "DS","","2022"))
 
