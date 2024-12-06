@@ -39,7 +39,6 @@ app.get('/v1/lion-school/alunos/filtro', cors(), async function(request, respons
 
     let dados = LionSchool.filtro(statusAC, nCurso, statusA, anoDC)
 
-    console.log(dados)
 
     if(dados){
         response.status(200)
