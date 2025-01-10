@@ -16,8 +16,6 @@ app.use((request, response, next) =>{
 
     next()
 })
-
-
 app.get('/v1/lion-school/cursos', cors(), async function(request, response){
 
     let dados = LionSchool.cursosLista()

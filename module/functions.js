@@ -78,13 +78,10 @@ function alunosStatusCurso(nomeCurso, statusAluno){
     let nCurso = String(nomeCurso.toUpperCase())
     let statusA = String(statusAluno.toUpperCase())
     let objetoRetorno = { curso : nCurso, status : statusA, alunos : []}
-
-
     if(listaCursos.some(curso => String(curso.sigla.toUpperCase()) === nCurso)){
         listaAlunos.forEach(function(aluno){
             let alunoRetorno = aluno
             let disciplinasStaus = []
-            
             alunoRetorno.curso.forEach(function(CursosDoAluno){
                 let cursoAluno = CursosDoAluno
                 if(String(CursosDoAluno.sigla.toUpperCase()) == nCurso){
@@ -102,7 +99,6 @@ function alunosStatusCurso(nomeCurso, statusAluno){
     }else{
         objetoRetorno = false
     }    
-
     return objetoRetorno
 }
 
